@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Current Big Valley Heating promotion.">
+    <title>Big Valley Heating Promotion</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header" aria-label="Big Valley Heating promotion">
+        <div>
+          <p class="eyebrow">Current monthly promo</p>
+          <h1>Big Valley Heating</h1>
+        </div>
+        <a class="small-link" href="static/Promo1.pdf" target="_blank" rel="noopener">Open PDF</a>
+      </header>
+
+      <section class="promo-frame" aria-label="Current promotion">
+        <object id="promoPdf" type="application/pdf" data="static/Promo1.pdf" aria-label="Big Valley promotion PDF">
+          <div class="fallback">
+            <p>Your browser can open the current promotion as a PDF.</p>
+            <a class="button secondary" href="static/Promo1.pdf" target="_blank" rel="noopener">Open Promo</a>
+          </div>
+        </object>
+      </section>
+
+      <section class="contact-bar" aria-label="Contact Big Valley Heating">
+        <a class="button" href="tel:+16044676474">Call Today</a>
+        <a class="button secondary" href="mailto:sales@bigvalleyheating.ca?subject=Big%20Valley%20Promotion">Contact Us Today</a>
+      </section>
+    </main>
+
+    <script>
+      const promoPath = "static/Promo1.pdf";
+      const cacheBreaker = new URLSearchParams({ updated: Date.now().toString() });
+      const freshPromoUrl = `${promoPath}?${cacheBreaker}`;
+
+      document.getElementById("promoPdf").data = freshPromoUrl;
+      document.querySelectorAll('a[href="static/Promo1.pdf"]').forEach((link) => {
+        link.href = freshPromoUrl;
+      });
+    </script>
+  </body>
+</html>

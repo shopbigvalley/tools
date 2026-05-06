@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: big-valley-promos
+    runtime: static
+    buildCommand: echo "Static site - no build required"
+    staticPublishPath: .
+    branch: main
+    autoDeploy: true
+    headers:
+      - path: /static/Promo1.pdf
+        name: Cache-Control
+        value: no-cache
